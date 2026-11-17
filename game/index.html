@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOLMARA — Streets of the Sun Coast</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="1280" height="720"></canvas>
+
+  <div id="title-screen" class="overlay">
+    <h1 class="logo">SOLMARA</h1>
+    <p class="tagline">Streets of the Sun Coast</p>
+    <p class="story">Rico Vega is back in Solmara with empty pockets and a long list of
+    people to pay back. Steal cars, dodge the SCPD, and pull five jobs across
+    six districts — from Palm Heights to the Marina Bay vault.</p>
+    <div class="menu">
+      <button id="btn-continue">Continue</button>
+      <button id="btn-new">New Game</button>
+      <button id="btn-freeroam">Free Roam</button>
+      <button id="btn-missions">Missions</button>
+      <button id="btn-howto">How to Play</button>
+    </div>
+    <p class="foot">An original game. No network requests. Progress saves in your browser.</p>
+  </div>
+
+  <div id="pause-menu" class="overlay hidden">
+    <h1 class="logo small">PAUSED</h1>
+    <div class="menu">
+      <button id="btn-resume">Resume</button>
+      <button id="btn-restart-mission">Restart Mission</button>
+      <button id="btn-quit-title">Quit to Title</button>
+    </div>
+    <p class="foot">M — mute music &amp; sound &nbsp;•&nbsp; Esc — resume</p>
+  </div>
+
+  <div id="howto-screen" class="overlay hidden">
+    <h1 class="logo small">HOW TO PLAY</h1>
+    <div class="howto">
+      <p><b>W A S D / arrows</b> — walk or drive &nbsp;•&nbsp; <b>Mouse</b> — aim &nbsp;•&nbsp; <b>Click</b> — shoot</p>
+      <p><b>E</b> — steal / exit a car &nbsp;•&nbsp; <b>Space</b> — handbrake &nbsp;•&nbsp; <b>F</b> — QuickFix garage (hold, $150)</p>
+      <p><b>Esc / P</b> — pause &nbsp;•&nbsp; <b>M</b> — mute</p>
+      <p>Stealing cars and shooting raise your wanted level. Lay low or visit the
+      QuickFix garage to cool off. Find all 10 Solmara Stars ($150 each) and the
+      health, armor, cash and SMG pickups hidden around the city.</p>
+      <p>Finish all five missions to complete Rico's story. Progress saves automatically.</p>
+    </div>
+    <div class="menu"><button id="btn-howto-back">Back</button></div>
+  </div>
+
+  <div id="mission-screen" class="overlay hidden">
+    <h1 class="logo small">MISSIONS</h1>
+    <div id="mission-list"></div>
+    <div class="menu"><button id="btn-missions-back">Back</button></div>
+  </div>
+
+  <div id="end-screen" class="overlay hidden">
+    <h1 id="end-title" class="logo small">MISSION PASSED</h1>
+    <p id="end-text" class="story"></p>
+    <p id="end-reward" class="reward"></p>
+    <div class="menu">
+      <button id="btn-end-continue">Continue</button>
+      <button id="btn-end-title">Title Screen</button>
+    </div>
+  </div>
+</div>
+<script src="js/util.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/world.js"></script>
+<script src="js/state.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/missions.js"></script>
+<script src="js/render.js"></script>
+<script src="js/hud.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
