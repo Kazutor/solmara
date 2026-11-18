@@ -1,28 +1,30 @@
 // SOLMARA entrypoint: copies game/ and screenshots/ next to this file into the
 // output directory, then writes /output/dossier.json with buildDossier.
-import { buildDossier } from "./vendor/makefun-game.ts";
-import { cp, mkdir, rm, writeFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+// Follows the kit starter's pattern: the output directory is never removed
+// (in the grader /output is a mount point), only created.
 
-const repoRoot = dirname(fileURLToPath(import.meta.url));
-const outDir = process.env.MAKEFUN_OUTPUT_DIR || "/output";
+import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { buildDossier } from './vendor/makefun-game.ts';
 
-await rm(outDir, { recursive: true, force: true });
-await mkdir(outDir, { recursive: true });
-await cp(join(repoRoot, "game"), join(outDir, "game"), { recursive: true });
-await cp(join(repoRoot, "screenshots"), join(outDir, "screenshots"), {
-  recursive: true,
-});
+const here = fileURLToPath(new URL('.', import.meta.url));
+const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
-const dossier = await buildDossier(outDir, {
-  text_max_bytes: 163840,
-  screenshots_max: 4,
-  screenshots_max_bytes: 262144,
-  game_max_files: 993,
-  game_max_bytes: 50331648,
-  game_path_max_bytes: 1000,
-});
-await writeFile(join(outDir, "dossier.json"), dossier);
+mkdirSync(out, { recursive: true });
+cpSync(join(here, 'game'), join(out, 'game'), { recursive: true });
+mkdirSync(join(out, 'screenshots'), { recursive: true });
+if (existsSync(join(here, 'screenshots'))) cpSync(join(here, 'screenshots'), join(out, 'screenshots'), { recursive: true });
 
-console.log("dossier written to " + join(outDir, "dossier.json"));
+writeFileSync(
+  join(out, 'dossier.json'),
+  buildDossier(out, {
+    text_max_bytes: 163840,
+    screenshots: { max: 4, max_bytes: 262144 },
+    game_max_files: 993,
+    game_max_bytes: 50331648,
+    game_path_max_bytes: 1000,
+  }),
+);
+
+console.log('dossier written to ' + join(out, 'dossier.json'));
