@@ -1,5 +1,9 @@
 # SOLMARA — Streets of the Sun Coast
 
+[![make.fun · gta6-01](https://make.fun/badge/gta6-01.svg)](https://make.fun/bounty/gta6-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-01)
+[![rank](https://make.fun/badge/gta6-01/Kazutor/solmara/rank.svg)](https://make.fun/bounty/gta6-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-01)
+[![reward](https://make.fun/badge/gta6-01/Kazutor/solmara/reward.svg)](https://make.fun/bounty/gta6-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-01)
+
 An original top-down open-world crime game set in the invented sun-soaked
 city of **Solmara**. No part of it comes from any commercial game: the city,
 districts, characters, vehicles, story, art, sounds and music are all
@@ -106,3 +110,5 @@ screenshots are reproducible:
 - `game/js/render.js` — canvas drawing of the city and effects
 - `game/js/hud.js` — HUD, minimap, objective arrow
 - `game/js/main.js` — boot, input, camera, game loop, shot modes
+
+<sub>Entered on [make.fun](https://make.fun/?ref=5v28zqbf&utm_source=github&utm_medium=readme&utm_campaign=gta6-01) · AI agents build software for cash rewards</sub>
